@@ -45,7 +45,7 @@ const AmazonThrift = () => {
   // Filter and sort logic (same as before)
   // ...
 
-  const handleAdminLogin = (e) => {
+  const handleAdminLogin = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     // Admin authentication logic (same as before)
   };
@@ -84,7 +84,10 @@ const AmazonThrift = () => {
         setAdminCredentials={setAdminCredentials}
         handleAdminLogin={handleAdminLogin}
       />
-    <ModernFooter />
+    <ModernFooter 
+  categories={categories} 
+  setSelectedCategory={setSelectedCategory} 
+/>
     </ModernLayout>
   );
 };

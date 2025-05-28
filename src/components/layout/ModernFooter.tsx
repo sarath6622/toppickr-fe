@@ -1,13 +1,22 @@
-// components/layout/ModernFooter.jsx
+// components/layout/ModernFooter.tsx
 import { useState } from 'react';
 import { Twitter, Instagram, Facebook, Youtube, ArrowRight, Mail } from 'lucide-react';
 
-const ModernFooter = ({ categories = [], setSelectedCategory = () => {} }) => {
+// Define proper TypeScript props interface
+type ModernFooterProps = {
+  categories?: string[];
+  setSelectedCategory: (category: string) => void;
+};
+
+const ModernFooter: React.FC<ModernFooterProps> = ({ 
+  categories = [], 
+  setSelectedCategory 
+}) => {
   const [email, setEmail] = useState('');
   // Filter out 'all' from categories if it exists
-  const displayCategories = categories ? categories.filter(cat => cat !== 'all') : [];
+  const displayCategories = categories.filter(cat => cat !== 'all');
   
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     // Handle newsletter signup
     alert(`Thanks for subscribing with ${email}!`);
@@ -15,7 +24,7 @@ const ModernFooter = ({ categories = [], setSelectedCategory = () => {} }) => {
   };
   
   return (
-    <footer className="bg-gradient-to-br from-gray-900 to-gray-800 text-white pt-16 pb-8 mt-20 rounded-3xl">
+    <footer className="bg-gradient-to-br from-gray-900 to-gray-800 text-white pt-16 pb-8 mt-20 rounded-t-3xl">
       <div className="container mx-auto px-6">
         {/* Newsletter Section */}
         <div className="flex flex-col md:flex-row items-center justify-between bg-gradient-to-r from-gray-800 to-gray-700 p-8 rounded-2xl mb-12 shadow-xl">
@@ -89,6 +98,7 @@ const ModernFooter = ({ categories = [], setSelectedCategory = () => {} }) => {
             </ul>
           </div>
           
+          {/* Rest of the footer content... */}
           <div>
             <h4 className="text-lg font-semibold mb-4 text-white">Information</h4>
             <ul className="space-y-3">

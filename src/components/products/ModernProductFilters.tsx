@@ -1,10 +1,17 @@
-// components/products/ModernProductFilters.jsx
+// components/products/ModernProductFilters.tsx
 import React from 'react';
 
-const ModernProductFilters = ({ 
+// Add proper type definitions
+type ModernProductFiltersProps = {
+  categories?: string[];
+  selectedCategory?: string;
+  setSelectedCategory: (category: string) => void; // Function that accepts a string parameter
+};
+
+const ModernProductFilters: React.FC<ModernProductFiltersProps> = ({ 
   categories = ['all'], 
   selectedCategory = 'all', 
-  setSelectedCategory = () => {} 
+  setSelectedCategory
 }) => {
   return (
     <div className="mb-8 bg-white text-gray-700 p-3 rounded-3xl">
