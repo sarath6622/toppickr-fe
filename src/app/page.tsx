@@ -9,12 +9,28 @@ import AdminLoginModal from '../components/admin/AdminLoginModal';
 import AdminPanel from '../components/admin/AdminPanel';
 import { mockProducts } from '../data/mockProducts';
 import ModernFooter from '@/components/layout/ModernFooter'
+// Add this at the top of your file or in a separate types.ts file
+type Product = {
+  id: number;
+  title: string;
+  asin: string;
+  price: number;
+  originalPrice: number;
+  rating: number;
+  reviews: number;
+  category: string;
+  description: string;
+  image: string;
+  affiliateLink: string;
+  inStock: boolean;
+  updatedAt: string;
+};
 
 const AmazonThrift = () => {
   const [isAdminLoggedIn, setIsAdminLoggedIn] = useState(false);
   const [showAdminLogin, setShowAdminLogin] = useState(false);
-  const [products, setProducts] = useState([]);
-  const [filteredProducts, setFilteredProducts] = useState([]);
+  const [products, setProducts] = useState<Product[]>([]);
+  const [filteredProducts, setFilteredProducts] = useState<Product[]>([]);
   const [selectedCategory, setSelectedCategory] = useState('all');
   const [searchTerm, setSearchTerm] = useState('');
   const [adminCredentials, setAdminCredentials] = useState({ username: '', password: '' });
