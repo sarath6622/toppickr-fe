@@ -28,9 +28,11 @@ const ModernHeader = ({ searchTerm, setSearchTerm, setShowAdminLogin }) => {
               <div className="flex items-center justify-between h-16">
                 {/* Logo */}
                 <div className="flex-shrink-0">
-                  <h1 className="text-2xl font-bold flex items-center bg-gray-200 pr-2 rounded-xl">
-                    <span className="bg-gray-900 text-white p-2 rounded-lg">Top</span>
-                    Pickr
+                  <h1 className="text-2xl font-bold flex items-center">
+                    <div className="flex items-center bg-gray-100 rounded-xl overflow-hidden">
+                      <span className="bg-gray-900 text-white px-2 py-2 pr-2">Top</span>
+                      <span className="pr-2 py-2 pl-1">Pickr</span>
+                    </div>
                   </h1>
                 </div>
 
