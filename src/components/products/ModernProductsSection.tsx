@@ -65,7 +65,7 @@ const ModernProductsSection: React.FC<ModernProductsSectionProps> = ({
   const skeletonArray = Array(6).fill(0);
   
   return (
-    <div className="">
+    <div className="p-5">
       <h2 className="text-2xl font-bold mb-6">
         {isLoading ? (
           <div className="h-8 bg-gray-200 rounded w-48 animate-pulse"></div>

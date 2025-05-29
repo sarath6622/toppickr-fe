@@ -11,3 +11,19 @@
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
+
+@layer base {
+  body {
+    @apply bg-gray-50;
+  }
+}
+
+@layer components {
+  .product-card {
+    @apply bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-all;
+  }
+  
+  .category-card {
+    @apply bg-white rounded-xl p-4 shadow-sm hover:shadow-md transition-shadow cursor-pointer;
+  }
+}

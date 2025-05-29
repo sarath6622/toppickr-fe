@@ -129,54 +129,75 @@ const AmazonThrift = () => {
 
   return (
     <ModernLayout>
-      <ModernHeader 
-        searchTerm={searchTerm}
-        setSearchTerm={setSearchTerm}
-        setShowAdminLogin={setShowAdminLogin}
-      />
-      
-      <div className="flex flex-col lg:flex-row gap-8">
-        <div className="lg:w-1/4">
-          <ModernProductFilters
-            categories={categories}
-            selectedCategory={selectedCategory}
-            setSelectedCategory={setSelectedCategory}
-          />
-        </div>
-        <div className="lg:w-3/4 bg-white rounded-2xl p-4">
-          {isAdminLoggedIn && (
-            <AdminPanel products={products} onLogout={() => setIsAdminLoggedIn(false)} />
-          )}
-          
-          {isLoading ? (
-            <div className="flex justify-center items-center h-64">
-              <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-blue-500"></div>
+      <div className="flex flex-col min-h-screen">
+        <ModernHeader 
+          searchTerm={searchTerm}
+          setSearchTerm={setSearchTerm}
+          setShowAdminLogin={setShowAdminLogin}
+        />
+        
+        {/* Main Content */}
+        <main className="flex-1 px-4 sm:px-6 lg:px-8">
+          <div className="flex flex-col lg:flex-row gap-6 py-2">
+            {/* Filters Sidebar */}
+            <aside className="lg:w-60 flex-shrink-0">
+              <div className="sticky top-20 bg-white rounded-xl p-4 shadow-sm">
+                <ModernProductFilters
+                  categories={categories}
+                  selectedCategory={selectedCategory}
+                  setSelectedCategory={setSelectedCategory}
+                />
+              </div>
+            </aside>
+
+            {/* Products Content */}
+            <div className="flex-1">
+              {isAdminLoggedIn && (
+                <div className="mb-6 bg-white rounded-xl p-4 shadow-sm">
+                  <AdminPanel 
+                    products={products} 
+                    onLogout={() => setIsAdminLoggedIn(false)} 
+                  />
+                </div>
+              )}
+              
+              {isLoading ? (
+                <div className="bg-white rounded-xl p-8 shadow-sm">
+                  <div className="flex justify-center items-center">
+                    <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-blue-500"></div>
+                  </div>
+                </div>
+              ) : error ? (
+                <div className="bg-red-50 rounded-xl p-4 border border-red-100 shadow-sm">
+                  <div className="flex items-center text-red-700">
+                    <strong className="font-medium">Error!</strong>
+                    <span className="ml-2">{error}</span>
+                  </div>
+                </div>
+              ) : (
+                <div className="bg-white rounded-xl shadow-sm">
+                  <ModernProductsSection 
+                    products={filteredProducts} 
+                    title={selectedCategory === 'all' ? "Featured Products" : `${selectedCategory} Products`} 
+                  />
+                </div>
+              )}
             </div>
-          ) : error ? (
-            <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative">
-              <strong className="font-bold">Error!</strong>
-              <span className="block sm:inline"> {error}</span>
-            </div>
-          ) : (
-            <ModernProductsSection 
-              products={filteredProducts} 
-              title={selectedCategory === 'all' ? "Featured Products" : `${selectedCategory} Products`} 
-            />
-          )}
-        </div>
+          </div>
+        </main>
+
+        <ModernFooter 
+          categories={categories} 
+          setSelectedCategory={setSelectedCategory} 
+        />
       </div>
-      
+
       <AdminLoginModal
         show={showAdminLogin && !isAdminLoggedIn}
         onClose={() => setShowAdminLogin(false)}
         adminCredentials={adminCredentials}
         setAdminCredentials={setAdminCredentials}
         handleAdminLogin={handleAdminLogin}
-      />
-      
-      <ModernFooter 
-        categories={categories} 
-        setSelectedCategory={setSelectedCategory} 
       />
     </ModernLayout>
   );
