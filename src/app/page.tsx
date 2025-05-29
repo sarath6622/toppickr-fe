@@ -143,7 +143,7 @@ const AmazonThrift = () => {
             setSelectedCategory={setSelectedCategory}
           />
         </div>
-        <div className="lg:w-3/4">
+        <div className="lg:w-3/4 bg-white rounded-2xl p-4">
           {isAdminLoggedIn && (
             <AdminPanel products={products} onLogout={() => setIsAdminLoggedIn(false)} />
           )}

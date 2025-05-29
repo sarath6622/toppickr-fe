@@ -14,7 +14,7 @@ const ModernProductFilters: React.FC<ModernProductFiltersProps> = ({
   setSelectedCategory
 }) => {
   return (
-    <div className="mb-8 bg-white text-gray-700 p-3 rounded-3xl">
+    <div className="mb-8 bg-white text-gray-700 p-3 rounded-3xl w-auto">
       <h3 className="text-lg font-medium m-4">Popular Categories</h3>
       <div className="flex flex-wrap gap-2">
         {categories.map(category => (
