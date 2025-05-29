@@ -141,7 +141,7 @@ const AmazonThrift = () => {
           <div className="flex flex-col lg:flex-row gap-6 py-2">
             {/* Filters Sidebar */}
             <aside className="lg:w-60 flex-shrink-0">
-              <div className="sticky top-20 bg-white rounded-xl p-4 shadow-sm">
+              <div className="sticky p-2 mt-5 bg-white rounded-xl p-4 shadow-sm">
                 <ModernProductFilters
                   categories={categories}
                   selectedCategory={selectedCategory}

@@ -81,7 +81,7 @@ const ModernHeader = ({ searchTerm, setSearchTerm, setShowAdminLogin }) => {
               </div>
 
               {/* Mobile Search Bar */}
-              {!isMobileMenuOpen && (
+              {/* {!isMobileMenuOpen && (
                 <div className="md:hidden py-4">
                   <div className="relative">
                     <input
@@ -94,7 +94,7 @@ const ModernHeader = ({ searchTerm, setSearchTerm, setShowAdminLogin }) => {
                     <Search className="absolute left-3 top-2.5 w-5 h-5 text-gray-400" />
                   </div>
                 </div>
-              )}
+              )} */}
             </div>
           </header>
         </div>
