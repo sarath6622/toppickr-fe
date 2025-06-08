@@ -73,7 +73,7 @@ const AmazonThrift = () => {
     const fetchProducts = async () => {
       setIsLoading(true);
       try {
-        const response = await fetch('https://toppickr-be.onrender.com/api/products/top-rated');
+        const response = await fetch('http://51.21.161.192:8080/api/products/top-rated');
         if (!response.ok) {
           throw new Error(`HTTP error! Status: ${response.status}`);
         }
